@@ -1,6 +1,6 @@
 FROM gcr.io/distroless/base-debian10
 
-COPY /greeter-server /
+COPY /greeter_server /
 
 EXPOSE 50051
 
