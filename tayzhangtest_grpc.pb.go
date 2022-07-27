@@ -4,11 +4,10 @@
 // - protoc             v3.19.1
 // source: tayzhangtest.proto
 
-package grpctayzhangtest
+package taylorzhtestpb
 
 import (
 	context "context"
-
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

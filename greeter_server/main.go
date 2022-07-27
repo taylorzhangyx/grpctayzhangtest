@@ -27,7 +27,7 @@ import (
 	"net"
 	"time"
 
-	pb "github.com/taylorzhangyx/grpctayzhangtest"
+	pb "github.com/taylorzhangyx/grpctayzhangtest/tayzhangtest"
 	"google.golang.org/grpc"
 )
 
