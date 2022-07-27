@@ -4,7 +4,7 @@
 // - protoc             v3.19.1
 // source: tayzhangtest.proto
 
-package taylorzhtestpb
+package grpctayzhangtest
 
 import (
 	context "context"
