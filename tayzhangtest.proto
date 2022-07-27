@@ -49,7 +49,8 @@ message LoadTestMetricsRequest{
 }
 
 message LoadTestMetricsReply{
-  map<int64, int64> retCode = 1;
+  int64 total = 2;
+  map<int64, int64> metrics = 1;
 }
 
 message LoadTestClearRequest{

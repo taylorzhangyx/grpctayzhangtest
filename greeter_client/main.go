@@ -21,13 +21,14 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"log"
 	"time"
 
+	pb "github.com/taylorzhangyx/grpctayzhangtest/taylorzhtestpb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	pb "google.golang.org/grpc/examples/helloworld/helloworld"
 )
 
 const (
@@ -63,4 +64,12 @@ func main() {
 		log.Printf("could not greet: %v", err)
 	}
 	log.Printf("Greeting: %s", r.GetMessage())
+
+	loadRet, _ := c.LoadTest(ctx, &pb.LoadTestRequest{Body: "bbb"})
+	log.Printf("LoadTest: %v", loadRet.GetRetCode())
+
+	metrics, _ := c.LoadTestMetrics(ctx, &pb.LoadTestMetricsRequest{})
+	jsonStr, _ := json.Marshal(metrics)
+	log.Printf("%+v", string(jsonStr))
+
 }
