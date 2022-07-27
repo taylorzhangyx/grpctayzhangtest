@@ -26,7 +26,7 @@ import (
 	"log"
 	"time"
 
-	pb "github.com/taylorzhangyx/grpctayzhangtest/taylorzhtestpb"
+	"github.com/taylorzhangyx/grpctayzhangtest/taylorzhtestpb/taylorzhtestpb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -54,21 +54,21 @@ func main() {
 		log.Printf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := pb.NewGreeterClient(conn)
+	c := taylorzhtestpb.NewGreeterClient(conn)
 
 	// Contact the server and print out its response.
 	ctx, cancel := context.WithTimeout(context.Background(), time.Minute)
 	defer cancel()
-	r, err := c.SayHello(ctx, &pb.HelloRequest{Name: *name})
+	r, err := c.SayHello(ctx, &taylorzhtestpb.HelloRequest{Name: *name})
 	if err != nil {
 		log.Printf("could not greet: %v", err)
 	}
 	log.Printf("Greeting: %s", r.GetMessage())
 
-	loadRet, _ := c.LoadTest(ctx, &pb.LoadTestRequest{Body: "bbb"})
+	loadRet, _ := c.LoadTest(ctx, &taylorzhtestpb.LoadTestRequest{Body: "bbb"})
 	log.Printf("LoadTest: %v", loadRet.GetRetCode())
 
-	metrics, _ := c.LoadTestMetrics(ctx, &pb.LoadTestMetricsRequest{})
+	metrics, _ := c.LoadTestMetrics(ctx, &taylorzhtestpb.LoadTestMetricsRequest{})
 	jsonStr, _ := json.Marshal(metrics)
 	log.Printf("%+v", string(jsonStr))
 
