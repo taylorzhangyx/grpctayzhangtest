@@ -4,4 +4,4 @@ COPY /greeter-server /
 
 EXPOSE 50051
 
-CMD ["/greeter-server"]
+CMD ["/greeter_server"]
