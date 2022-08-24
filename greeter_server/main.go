@@ -71,11 +71,23 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
+
+	lis2, err := net.Listen("tcp", fmt.Sprintf(":%d", 8501))
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+
 	s := grpc.NewServer()
 	pb.RegisterGreeterServer(s, &server{})
 	log.Printf("server listening at %v", lis.Addr())
 
 	go consumeLoadCount()
+
+	go func() {
+		if err := s.Serve(lis2); err != nil {
+			log.Fatalf("failed to serve2: %v", err)
+		}
+	}()
 
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
