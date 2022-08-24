@@ -3,7 +3,7 @@
 # 编译pb协议文件
 
 IMAGE := test-app-grpc-server
-TAG :=v1.0.0
+TAG :=v1.0.1
 REGISTRY := ccr.ccs.tencentyun.com/tiemsdev
 
 server:

@@ -32,7 +32,7 @@ import (
 )
 
 var (
-	port = flag.Int("port", 50051, "The server port")
+	port = flag.Int("port", 8500, "The server port")
 
 	loadTotalCount int64
 	loadMetrics    = make(map[int64]int64)
